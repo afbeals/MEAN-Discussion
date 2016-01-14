@@ -1,0 +1,37 @@
+  <div ng-controller="DashboardController" style=" margin: 0px auto" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h3>Welcome, {{currentUser.name}}</h3>
+      <button  style="float: right">Clear</button>
+      <button  style="float: right; margin: 0px 10px">Search</button>
+      <input type="text"  style="float: right" ng-model="searchText.title"/>
+      <table class="table table-striped">
+      <tr>
+        <th>Category</th>
+        <th>Topic</th>
+        <th>User Name</th>
+        <th>Answers</th>
+      </tr>
+      <tr ng-repeat="topic in topics | orderBy: '-answer' | filter:searchText">
+      
+        <td style="overflow: auto">{{topic.category}}</td><td style="overflow: auto"><a href="#/topic/{{topic._id}}" ng-click="requestTopic(topic._id)">{{topic.title}}</a></td><td style="overflow: auto"><a href="#/profile/{{topic._user}}" ng-click='addSingleUser(topic._user)'>{{topic._user}}</a></td><td>{{topic.answer.length}}</td>
+      </tr>
+      </table>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <h4>Add a new Topic</h4>
+      <form class="form-inline">
+        <label class='col-lg-12'>
+          Topic: <input style="float: right" type="text" ng-model="add_topic.title" class="form-control" />
+        </label>
+        <label class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+          Description: <input  style="float: right; height: 175px; width: 250px"type="text" ng-model="add_topic.description" class="form-control" />
+        </label>
+        <label class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+          Category: <select ng-model="add_topic.category">
+                      <option ng-repeat="topic in topics" value="{{topic.category}}">{{topic.category}}</option>
+                    </select>
+        </label>
+        <button ng-click="addTopic()" class="form-control" style="float: right;">Submit</button>
+      </form>
+    </div>
+  </div>

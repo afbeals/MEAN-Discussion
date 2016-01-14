@@ -1,0 +1,10 @@
+{
+  "name": "discussion_board_app",
+  "description": "Discussion Board MEAN app",
+  "dependencies": {
+    "body-parser": "^1.10.1",
+    "express": "^4.10.0",
+    "express-session": "^1.12.1",
+    "mongoose": "^4.0.1"
+  }
+}

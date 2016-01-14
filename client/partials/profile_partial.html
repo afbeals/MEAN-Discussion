@@ -1,0 +1,11 @@
+  <div ng-controller="ProfileController" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="">
+  <div style="float: right; letter-spacing: 2px; margin-bottom: 10px;"><a href="#/dashboard">Dashboard</a> | <a href="#/Logout" ng-click="logoutUser()">Logout</a></div>
+    <div ng-repeat="user in user">
+    <h4 style="margin-top:20px">Username: {{user._id}}</h4>
+    <h4>Posted:</h4>
+    <p>{{user.topics}} Topics</p>
+    <p>{{user.answers}} Posts</p>
+    <p>{{user.comments}} Comments</p>
+    </div>
+  </div>
+  

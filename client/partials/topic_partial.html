@@ -1,0 +1,33 @@
+  <div ng-controller="TopicController" class="row" style="width: 95%; height: auto; margin: 0px auto">
+    <div style="text-align: right; letter-spacing: 2px; margin-bottom: 10px;" class="col-sm-12 col-xs-12 col-md-12 col-lg-12"><a href="#/dashboard">Dashboard</a> | <a href="#/Logout">Logout</a></div>
+    <p><a href="#/profile/{{topics._user}}" ng-click='addSingleUser(topics._user)'>{{topics._user}}</a> <b>posted a topic:</b></p>
+    <p><b>{{topics.title}}</b></p>
+    <p>{{topics.description}}</p>
+        <form class="form-inline">
+      <p>Post your answer here:</p>
+      <label>
+        <input type="text" ng-model="add_answer.content" class="form-control" />
+        <button class="form-control" ng-click="addAnswer(topics._id)">Answer</button>
+      </label>
+    </form>
+    {{currentUser}}
+    <hr>
+    <ul>
+      <li ng-repeat="answer in answer">
+        <p><a href="#/profile/{{answer._user}}" ng-click='addSingleUser(answer._user)'>{{answer._user}}</a>: {{answer.content}}</p>{{answer.likes}}<button ng-click="addLike(answer)">Like</button>{{answer.dislikes}}<button ng-click="addDislike(answer)">Dislike</button>
+        <ul>
+          <li ng-repeat="comment in answer.comment">
+            <p><a href="#/profile/{{comment._user}}" ng-click='addSingleUser(comment._user)'>{{comment._user}}</a>: {{comment.content}}</p>
+          </li>
+        </ul>
+        <form class="form-inline">
+          <label>
+            <input type="text" ng-model="add_comment.content" class="form-control">
+           
+            <button ng-click="addComment(answer)">Post</button>
+            </label> 
+        </form>
+        <hr>
+      </li>
+    </ul>
+  </div>
